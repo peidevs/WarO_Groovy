@@ -13,4 +13,5 @@ gradle myBuild
 cd staging
 java -jar warO.jar ../config.groovy
 
+TODO: make a Gradle task to run the program
 
