@@ -1,6 +1,6 @@
 
 numCards = 60
-numGames = 200
+numGames = 2
 
 // Player requires: name, strategy, numCards
 // TODO: remove numCards requirement
@@ -13,12 +13,11 @@ numGames = 200
 players << new Player('Michael Max', new MaxCard(), numCards)    
 players << new Player('Randy Random', new RandomCard(), numCards)    
 
+/*
 def top = new MaxCard()
 def mid = new RandomCard()
 def low = new MinCard()
 def hybridThirds = new HybridThirds(top, mid, low)
 players << new Player('Helen Hybrid', hybridThirds, numCards)    
-
-//players << new Player('Doyle Distance', new NearestCard(), numCards)
-//players << new Player('Mark Min', new MinCard(), numCards)    
+*/
 
