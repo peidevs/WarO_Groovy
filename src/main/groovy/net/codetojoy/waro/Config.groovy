@@ -1,8 +1,7 @@
 
 package net.codetojoy.waro
 
-import net.codetojoy.waro.domain.* 
-import net.codetojoy.waro.strategy.* 
+import net.codetojoy.waro.domain.Player
 
 class Config {
     final List<Player> players
