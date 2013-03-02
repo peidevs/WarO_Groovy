@@ -16,7 +16,7 @@ players << new Player('Randy Random', new RandomCard(), numCards)
 def top = new MaxCard()
 def mid = new RandomCard()
 def low = new MinCard()
-def hybridThirds = new HybridStategy(top, mid, low)
+def hybridThirds = new HybridThirds(top, mid, low)
 players << new Player('Helen Hybrid', hybridThirds, numCards)    
 
 //players << new Player('Doyle Distance', new NearestCard(), numCards)

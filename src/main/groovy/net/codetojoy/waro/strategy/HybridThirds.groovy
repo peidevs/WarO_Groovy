@@ -18,9 +18,9 @@ class HybridThirds implements Strategy {
     int selectCard(int prizeCard, List<Integer> hand, int maxCard) {
         def result = hand[0]
                 
-        if (card > (numCards * (2/3)) ) {
+        if (prizeCard > (maxCard * (2/3)) ) {
             result = topStrategy.selectCard(prizeCard, hand, maxCard)
-        } else if (card > (numCards/3) ) {
+        } else if (prizeCard > (maxCard/3) ) {
             result = midStrategy.selectCard(prizeCard, hand, maxCard)
         } else {
             result = lowStrategy.selectCard(prizeCard, hand, maxCard)            
