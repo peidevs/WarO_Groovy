@@ -42,7 +42,7 @@ class Game {
         def table = dealer.deal(numCards, players)
         
         if (verbose) {
-            println "kitty: ${table.kitty.toString()}"
+            // println "kitty: ${table.kitty.toString()}"
             table.players.each { p -> println "${p.name}: ${p.hand.toString()}" }
         }
     
