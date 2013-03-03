@@ -49,10 +49,10 @@ class Dealer {
 
     protected def playRound(def prizeCard, def players) {
         def pair = findRoundWinner(prizeCard, players)
-        int maxBid = pair.max
+        int winningBid = pair.winningBid
         Player winner = pair.winner
 
-        if (verbose) { println "\nthis round: ${winner.name} WINS $prizeCard with ${maxBid}" }
+        if (verbose) { println "\nthis round: ${winner.name} WINS $prizeCard with ${winningBid}" }
 
         winner.playerStats.numRoundsWon++
         winner.playerStats.total += prizeCard
@@ -60,7 +60,7 @@ class Dealer {
         winner        
     }
 
-    // returns Expando with 'Player winner' and 'int max'
+    // returns Expando with 'Player winner' and 'int winningBid'
     protected def findRoundWinner(def prizeCard, def players) {
         def result = new Expando()
 
@@ -69,7 +69,7 @@ class Dealer {
              
              if (bid.offer > max) {
                  result.winner = bid.player
-                 result.max = bid.offer
+                 result.winningBid = bid.offer
                  max = result.max
              }
              

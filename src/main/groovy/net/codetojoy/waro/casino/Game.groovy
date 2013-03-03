@@ -29,17 +29,9 @@ class Game {
         
         table.assertTotals()
         
-        def max = 0
-        def winner 
+        def winner = players.max { p -> p.playerStats.total }
+        def max = winner.playerStats.total
         
-        // TODO: use inject ?
-        players.each { p ->
-            if (p.playerStats.total > max) {
-                max = p.playerStats.total
-                winner = p
-            }
-        }
-
         if (verbose) {
             players.each { p ->
                 def stats = p.playerStats
