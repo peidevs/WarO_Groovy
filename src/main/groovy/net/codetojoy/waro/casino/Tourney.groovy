@@ -23,7 +23,7 @@ class Tourney {
         println "\nTourney summary:  "
 
         players.each { p ->
-            println "${p.name} has ${p.playerStats.wins} wins over ${numGames} games"
+            println "${p.name} has ${p.playerStats.numGamesWon} wins over ${numGames} games"
         }        
     }
     

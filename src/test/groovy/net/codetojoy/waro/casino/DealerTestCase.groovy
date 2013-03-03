@@ -17,28 +17,22 @@ class DealerTestCase extends GroovyTestCase {
         players << new Player('Doyle B', strategy, numCards)
     }
     
-    void testFindRoundWinner_Default() {
-        // pre
-        def bids = []
+    void testPlayRound_Default() {
+        def prizeCard = 42
         
         players[0].hand = [10,11,12]
         players[1].hand = [15,16,17]
         players[2].hand = [58,50,49]
         
-        bids << new Bid(10, players[0])
-        bids << new Bid(15, players[1])
-        bids << new Bid(58, players[2])
-        
         // test
-        def result = dealer.findRoundWinner(bids)
+        def winner = dealer.playRound(prizeCard, players)
         
-        // post
-        assert 'Doyle B' == result.winner.name
-        assert 58 == result.max
+        assert 'Doyle B' == winner.name
+        assert 1 == winner.playerStats.numRoundsWon
+        assert prizeCard == winner.playerStats.total
     }
 
     void testPlay_Default() {
-        // pre
         def kitty = [35,25,55]
 
         players[0].hand = [10,11,52]
@@ -50,7 +44,6 @@ class DealerTestCase extends GroovyTestCase {
         // test
         def winner = dealer.play(table)
 
-        // post
         assert 0 == table.players[0].hand.size()
         assert 0 == table.players[1].hand.size()
         assert 0 == table.players[2].hand.size()          

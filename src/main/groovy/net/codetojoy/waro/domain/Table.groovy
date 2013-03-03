@@ -16,7 +16,7 @@ class Table {
                 
         players.each { p ->
             playerTotal += p.playerStats.total
-            roundsTotal += p.playerStats.rounds
+            roundsTotal += p.playerStats.numRoundsWon
         }
 
         assert kitty.sum() == playerTotal

@@ -48,26 +48,25 @@ class Dealer {
     }
 
     protected def playRound(def prizeCard, def players) {
-        // TODO: no need to collect all bids before determining winner
-        def bids = players.inject( [], { bids, player -> bids << player.getBid(prizeCard) } )
-
-        def result = findRoundWinner(bids)
-        int maxBid = result.max
-        Player winner = result.winner
+        def pair = findRoundWinner(prizeCard, players)
+        int maxBid = pair.max
+        Player winner = pair.winner
 
         if (verbose) { println "\nthis round: ${winner.name} WINS $prizeCard with ${maxBid}" }
 
-        winner.playerStats.rounds++
+        winner.playerStats.numRoundsWon++
         winner.playerStats.total += prizeCard
         
         winner        
     }
 
-    protected def findRoundWinner(def bids) {
+    // returns Expando with 'Player winner' and 'int max'
+    protected def findRoundWinner(def prizeCard, def players) {
         def result = new Expando()
 
-        bids.inject( 0, { max, bid ->
-                         
+        players.inject( 0, { max, player ->                   
+             def bid = player.getBid(prizeCard)      
+             
              if (bid.offer > max) {
                  result.winner = bid.player
                  result.max = bid.offer
