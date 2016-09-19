@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:1.6.4'
-    groovy 'com.google.guava:guava-collections:r03'
+    compile 'org.codehaus.groovy:groovy-all:1.6.4'
+    compile 'com.google.guava:guava-collections:r03'
     releaseJars 'org.codehaus.groovy:groovy-all:1.6.4'
     releaseJars 'com.google.guava:guava-collections:r03'
 }
