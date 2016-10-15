@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/peidevs/WarO_Groovy.svg?branch=master)](https://travis-ci.org/peidevs/WarO_Groovy)
+
 WarO_Groovy
 ===========
 
