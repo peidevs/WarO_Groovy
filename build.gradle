@@ -10,7 +10,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:1.6.4'
     compile 'com.google.guava:guava-collections:r03'
 
-    testCompile 'org.junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }
 
 mainClassName = 'net.codetojoy.waro.Main'
