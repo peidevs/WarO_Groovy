@@ -8,15 +8,11 @@ The War-O [code kata](https://en.wikipedia.org/wiki/Kata_(programming)) in Groov
 To run:
 
 * install Gradle from http://gradle.org
-* configure numCards, numGames and players in config.groovy
+* configure numCards, numGames and players in `config.groovy`
 * type (or script): 
 ```
-gradle myBuild
-cd staging
-java -jar warO.jar ../config.groovy
+gradle run
 ```
-
-TODO: make a Gradle task to run the program
 
 Rules:
 ---------
