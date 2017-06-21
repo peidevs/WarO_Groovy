@@ -1,48 +1,20 @@
 
-// build tickle
-
 apply plugin: 'groovy'
-
-configurations {
-    releaseJars
-}
+apply plugin: 'application'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:1.6.4'
     compile 'com.google.guava:guava-collections:r03'
-    releaseJars 'org.codehaus.groovy:groovy-all:1.6.4'
-    releaseJars 'com.google.guava:guava-collections:r03'
+
+    testCompile 'org.junit:junit:4.12'
 }
 
-task init {
-    delete "${buildDir}/jars"
-    mkdir "${buildDir}/jars"
-    delete stagingDir
-    mkdir stagingDir
-}
+mainClassName = 'net.codetojoy.waro.Main'
 
-task copyReleaseJars(type: Copy, dependsOn: 'init') {
-    into "${buildDir}/jars"
-    from configurations.releaseJars
-}
-
-jar.archiveName 'warO.jar'
-jar.manifest {
-    attributes 'Main-Class' : 'net.codetojoy.waro.Main' 
-    attributes 'Class-Path' : 'jars/groovy-all-1.6.4.jar jars/guava-collections-r03.jar jars/guava-base-r03.jar'
-}
-
-task myBuild(dependsOn: ['test', 'copyReleaseJars', 'jar']) {
-    doLast {
-        ant.zip(destfile: "${buildDir}/warO.zip") {
-            zipfileset(dir: "${buildDir}/jars", prefix: "jars")
-            zipfileset(file: "${buildDir}/libs/warO.jar")
-        }
-
-        ant.unzip(src: "${buildDir}/warO.zip", dest: project.stagingDir)
-    }
+run {
+    args 'config.groovy'
 }
