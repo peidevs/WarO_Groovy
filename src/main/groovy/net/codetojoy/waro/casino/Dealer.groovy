@@ -48,11 +48,10 @@ class Dealer {
     }
 
     protected def playRound(def prizeCard, def players) {
-        def pair = findRoundWinner(prizeCard, players)
-        int winningBid = pair.winningBid
-        Player winner = pair.winner
+        def winningBid = findRoundWinner(prizeCard, players)
+        def winner = winningBid.player
 
-        if (verbose) { println "\nthis round: ${winner.name} WINS $prizeCard with ${winningBid}" }
+        if (verbose) { println "\nthis round: ${winner.name} WINS $prizeCard with ${winningBid.offer}" }
 
         winner.playerStats.numRoundsWon++
         winner.playerStats.total += prizeCard
@@ -62,21 +61,10 @@ class Dealer {
 
     // returns Expando with 'Player winner' and 'int winningBid'
     protected def findRoundWinner(def prizeCard, def players) {
-        def result = new Expando()
+        def bids = players.collect { p -> p.getBid(prizeCard) }
+        def winningBid = bids.max { b -> b.offer }
 
-        players.inject( 0, { max, player ->                   
-             def bid = player.getBid(prizeCard)      
-             
-             if (bid.offer > max) {
-                 result.winner = bid.player
-                 result.winningBid = bid.offer
-                 max = result.max
-             }
-             
-             max
-         } )  
-         
-         result      
+        return winningBid      
     }
 
     protected def newDeck(def numCards) {
