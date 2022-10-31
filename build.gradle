@@ -3,14 +3,14 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:1.6.4'
-    compile 'com.google.guava:guava-collections:r03'
+    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
+    implementation 'com.google.guava:guava-collections:r03'
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 mainClassName = 'net.codetojoy.waro.Main'
@@ -19,6 +19,9 @@ run {
     args 'config.groovy'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.4.1' 
+test {
+    testLogging {
+        events "passed", "failed"
+    }
 }
+
