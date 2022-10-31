@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
+    implementation 'org.codehaus.groovy:groovy-all:3.0.13'
     implementation 'com.google.guava:guava-collections:r03'
 
     testImplementation 'junit:junit:4.12'
